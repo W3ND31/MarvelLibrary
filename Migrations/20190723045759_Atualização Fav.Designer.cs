@@ -3,14 +3,16 @@ using System;
 using MarvelLibrary.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MarvelLibrary.Migrations
 {
     [DbContext(typeof(MarvelLibraryContext))]
-    partial class MarvelLibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190723045759_Atualização Fav")]
+    partial class AtualizaçãoFav
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,7 @@ namespace MarvelLibrary.Migrations
 
             modelBuilder.Entity("MarvelLibrary.Models.Fav", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("Id");
 
                     b.Property<int>("CharacterId");
 
