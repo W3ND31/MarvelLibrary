@@ -20,10 +20,16 @@ namespace MarvelLibrary.Data
             builder.Entity<Fav>().Property(p => p.Id).ValueGeneratedOnAdd();
             builder.Entity<Fav>().HasKey(table => new { table.Id, table.CharacterId });
 
+            builder.Entity<ComicCharacter>().HasKey(table => new { table.ComicId, table.CharacterId });
+
         }
 
         public DbSet<Character> Character { get; set; }
 
         public DbSet<Fav> Fav { get; set; }
+
+        public DbSet<Comic> Comic { get; set; }
+
+        public DbSet<ComicCharacter> ComicCharacter { get; set; }
     }
 }

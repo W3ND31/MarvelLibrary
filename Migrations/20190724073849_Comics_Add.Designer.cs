@@ -3,14 +3,16 @@ using System;
 using MarvelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MarvelLibrary.Migrations
 {
     [DbContext(typeof(MarvelLibraryContext))]
-    partial class MarvelLibraryContextModelSnapshot : ModelSnapshot
+    [Migration("20190724073849_Comics_Add")]
+    partial class Comics_Add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,17 +57,6 @@ namespace MarvelLibrary.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Comic");
-                });
-
-            modelBuilder.Entity("MarvelLibrary.Models.ComicCharacter", b =>
-                {
-                    b.Property<int>("ComicId");
-
-                    b.Property<int>("CharacterId");
-
-                    b.HasKey("ComicId", "CharacterId");
-
-                    b.ToTable("ComicCharacter");
                 });
 
             modelBuilder.Entity("MarvelLibrary.Models.Fav", b =>

@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace MarvelLibrary.Models.ViewModels
 {
-    public class CharactersViewModel
+    public class FavCharactersViewModel
     {
-        public ICollection<Character> Characters { get; set; }
         public Fav Fav { get; set; }
+        public IEnumerable<Character> Characters { get; set; }
+        
     }
 }

@@ -54,5 +54,11 @@ namespace MarvelLibrary.Services
         {
             return await _context.Character.OrderBy(e => e.Name).ToListAsync();
         }
+
+        public async Task<IEnumerable<Character>> FavCharacters(){
+            var _fav = _context.Fav.Select(e => e.CharacterId).ToList();
+            //IEnumerable<Character> favCharacters = 
+            return await (from p in _context.Character where _fav.Contains(p.Id) select p).OrderBy(e => e.Name).ToListAsync();
+        }
     }
 }

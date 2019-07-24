@@ -30,5 +30,22 @@ namespace MarvelLibrary.Services
             request.AddParameter("offset", offset);
             return client.Execute(request);
         }
+
+        public static IRestResponse ComicsGet(int id)
+        {
+            var client = new RestClient("https://gateway.marvel.com:443/v1/public");
+            var request = new RestRequest($"/characters/{id}/comics?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            return client.Execute(request);
+        }
+        public static IRestResponse ComicsGet(int limit, int offset, int id)
+        {
+
+            var client = new RestClient("https://gateway.marvel.com:443/v1/public");
+            var request = new RestRequest($"/characters/{id}/comics?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            request.AddParameter("limit", limit);
+            request.AddParameter("offset", offset);
+            return client.Execute(request);
+        }
+
     }
 }

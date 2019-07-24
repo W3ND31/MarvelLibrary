@@ -22,10 +22,6 @@ namespace MarvelLibrary.Services
 
         public void InsertFav(int id)
         {
-            //var ch = _context.Character.Find(id);
-
-            Character ch = _context.Character.Find(id);
-
             if (!FavExists(id))
             {
                 Fav f = new Fav((int)id);

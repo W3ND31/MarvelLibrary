@@ -31,3 +31,6 @@ D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\MarvelLibrary.csproj.CopyCompl
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Characters\Details.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Characters\Index.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Shared\View.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Favs\Delete.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Favs\Details.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Favs\Index.g.cshtml.cs
