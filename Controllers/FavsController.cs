@@ -26,9 +26,6 @@ namespace MarvelLibrary.Controllers
             _comicService = comicService;
         }
 
-
-
-        // GET: Favs
         public async Task<IActionResult> Index()
         {
             return View(await _charService.FavCharacters());
@@ -56,36 +53,6 @@ namespace MarvelLibrary.Controllers
             }
 
             return View(fav);
-        }
-
-        
-        // GET: Favs/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fav = await _context.Fav
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (fav == null)
-            {
-                return NotFound();
-            }
-
-            return View(fav);
-        }
-
-        // POST: Favs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var fav = await _context.Fav.FindAsync(id);
-            _context.Fav.Remove(fav);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool FavExists(int id)
