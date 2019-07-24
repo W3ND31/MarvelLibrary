@@ -15,7 +15,6 @@ namespace MarvelLibrary.Data
             : base(options)
         {
         }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<Fav>().Property(p => p.Id).ValueGeneratedOnAdd();

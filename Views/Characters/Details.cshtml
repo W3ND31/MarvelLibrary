@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1 class="mt-5">Details</h1>
 
 <div>
     <h4>Character</h4>
@@ -37,5 +37,6 @@
     </dl>
 </div>
 <div>
+    <a asp-action="Favorite" asp-route-id="@Model.Id">@ViewBag.Fav</a> |
     <a asp-action="Index">Back to List</a>
 </div>

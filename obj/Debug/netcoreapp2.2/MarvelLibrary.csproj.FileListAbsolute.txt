@@ -30,4 +30,4 @@ D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\MarvelLibrary.pdb
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\MarvelLibrary.csproj.CopyComplete
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Characters\Details.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Characters\Index.g.cshtml.cs
-D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Characters\Fav.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Debug\netcoreapp2.2\Razor\Views\Shared\View.g.cshtml.cs

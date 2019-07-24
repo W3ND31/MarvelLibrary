@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MarvelLibrary.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MarvelLibrary.Services
 {
@@ -48,6 +49,10 @@ namespace MarvelLibrary.Services
                 }
                 n += 100;
             }
+        }
+        public async Task<IEnumerable<Character>> GetCharacters()
+        {
+            return await _context.Character.OrderBy(e => e.Name).ToListAsync();
         }
     }
 }

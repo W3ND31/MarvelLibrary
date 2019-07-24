@@ -25,7 +25,7 @@ namespace MarvelLibrary.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Character.ToListAsync());
+            return View(await _charService.GetCharacters());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -42,20 +42,37 @@ namespace MarvelLibrary.Controllers
                 return NotFound();
             }
 
+            bool teste = _favService.FavExists((int)id);
+            if (teste)
+            {
+                ViewBag.Fav = "Remove Favorite";
+            }
+            else
+            {
+                ViewBag.Fav = "Set Favorite";
+            }
+            
             return View(character);
         }
 
         public IActionResult Create()
         {
-
+           
             _charService.InitCharacters();
             return Redirect("Index");
         }
 
-        public IActionResult Fav(int id)
+        public IActionResult Favorite(int id)
         {
-            _favService.InsertFav((int)id);
-            return RedirectToAction(nameof(Index));
+            if (_favService.FavExists(id))
+            {
+                _favService.RemoveFav(id);
+            }else
+            {
+                _favService.InsertFav(id);
+            }
+            int n = id;
+            return RedirectToAction(nameof(Details), new { id = n });
 
         }
 

@@ -43,6 +43,7 @@ namespace MarvelLibrary
 
             services.AddScoped<CharacterService>();
             services.AddScoped<FavService>();
+            services.AddScoped<RestServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

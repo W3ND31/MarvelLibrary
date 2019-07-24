@@ -7,5 +7,7 @@ namespace MarvelLibrary.Models.ViewModels
 {
     public class CharactersViewModel
     {
+        public ICollection<Character> Characters { get; set; }
+        public Fav Fav { get; set; }
     }
 }
