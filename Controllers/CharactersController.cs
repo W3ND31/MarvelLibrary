@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MarvelLibrary.Models;
+using MarvelLibrary.Services;
 using MarvelLibrary.Data;
 
 namespace MarvelLibrary.Controllers
@@ -13,12 +13,14 @@ namespace MarvelLibrary.Controllers
     public class CharactersController : Controller
     {
         private readonly MarvelLibraryContext _context;
-        private readonly SeedingDb _sd;
+        private readonly CharacterService _charService;
+        private readonly FavService _favService;
 
-        public CharactersController(MarvelLibraryContext context, SeedingDb sd)
+        public CharactersController(MarvelLibraryContext context, CharacterService charService, FavService favService)
         {
             _context = context;
-            _sd = sd;
+            _charService = charService;
+            _favService = favService;
         }
 
         public async Task<IActionResult> Index()
@@ -46,21 +48,15 @@ namespace MarvelLibrary.Controllers
         public IActionResult Create()
         {
 
-            _sd.SeedCharacters();
+            _charService.InitCharacters();
             return Redirect("Index");
         }
 
-        public IActionResult Fav(int? id)
+        public IActionResult Fav(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            else
-            {
-                _sd.InsertFav((int)id);
-                return RedirectToAction(nameof(Index));
-            }
+            _favService.InsertFav((int)id);
+            return RedirectToAction(nameof(Index));
+
         }
 
         private bool CharacterExists(int id)

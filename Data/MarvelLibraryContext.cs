@@ -4,8 +4,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MarvelLibrary.Models;
+using MarvelLibrary.Models.ViewModels;
 
-namespace MarvelLibrary.Models
+namespace MarvelLibrary.Data
 {
     public class MarvelLibraryContext : DbContext
     {
@@ -18,7 +20,6 @@ namespace MarvelLibrary.Models
         {
             builder.Entity<Fav>().Property(p => p.Id).ValueGeneratedOnAdd();
             builder.Entity<Fav>().HasKey(table => new { table.Id, table.CharacterId });
-
 
         }
 

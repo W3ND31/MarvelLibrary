@@ -77,6 +77,10 @@
             "RestSharp": {
               "target": "Package",
               "version": "[106.6.10, )"
+            },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[4.3.1, )"
             }
           },
           "imports": [
