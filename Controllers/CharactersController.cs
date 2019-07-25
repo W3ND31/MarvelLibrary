@@ -23,9 +23,18 @@ namespace MarvelLibrary.Controllers
             _favService = favService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
-            return View(await _charService.GetCharacters());
+            ViewData["Filter"] = searchString;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                return View(await _charService.GetCharacters(searchString));
+            }
+            else
+            {
+                return View(await _charService.GetCharacters());
+            }
         }
 
         public async Task<IActionResult> Details(int? id)

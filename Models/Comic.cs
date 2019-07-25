@@ -14,12 +14,13 @@ namespace MarvelLibrary.Models
         public string SeriesName { get; set; }
         public DateTime OnSaleDate { get; set; }
         public string Thumbnail { get; set; }
+        public string Description { get; set; }
 
         public Comic()
         {
         }
 
-        public Comic(int id, string title, string format, int pageCount, string seriesName, DateTime onSaleDate, string thumbnail)
+        public Comic(int id, string title, string format, int pageCount, string seriesName, DateTime onSaleDate, string thumbnail,string description)
         {
             Id = id;
             Title = title;
@@ -28,6 +29,7 @@ namespace MarvelLibrary.Models
             SeriesName = seriesName;
             OnSaleDate = onSaleDate;
             Thumbnail = thumbnail;
+            Description = description;
         }
     }
 }

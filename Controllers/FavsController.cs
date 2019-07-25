@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Data;
-using MarvelLibrary.Models.ViewModels;
+using MarvelLibrary.Models;
 using MarvelLibrary.Services;
 
 namespace MarvelLibrary.Controllers
@@ -38,21 +38,47 @@ namespace MarvelLibrary.Controllers
             return RedirectToAction(nameof(Details), new { id = n });
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string searchString)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            ViewData["Filter"] = searchString;
+            ViewBag.id = id;
 
-            var fav = await _context.Fav
-                .FirstOrDefaultAsync(m => m.CharacterId == id);
-            if (fav == null)
+            if (!String.IsNullOrEmpty(searchString))
             {
-                return NotFound();
-            }
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                _comicService.InsertComics((int)id);
 
-            return View(fav);
+                var comics = await _comicService.GetComics((int)id, searchString);
+
+                int n = comics.Count();
+                if (n == 0)
+                {
+                    return NotFound();
+                }
+
+                return View(await _comicService.GetComics((int)id,searchString));
+            }
+            else
+            {
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                _comicService.InsertComics((int)id);
+
+                var comics = await _comicService.GetComics((int)id);
+
+                int n = comics.Count();
+                if (n == 0)
+                {
+                    return NotFound();
+                }
+
+                return View(await _comicService.GetComics((int)id));
+            }
         }
 
         private bool FavExists(int id)

@@ -19,13 +19,13 @@ namespace MarvelLibrary.Services
         public static IRestResponse CharactersGet()
         {
             var client = new RestClient("https://gateway.marvel.com:443/v1/public");
-            var request = new RestRequest($"/characters?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest($"/characters?orderBy=name&ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
             return client.Execute(request);
         }
         public static IRestResponse CharactersGet(int limit, int offset){
 
             var client = new RestClient("https://gateway.marvel.com:443/v1/public");
-            var request = new RestRequest($"/characters?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest($"/characters?orderBy=name&ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
             request.AddParameter("limit", limit);
             request.AddParameter("offset", offset);
             return client.Execute(request);
@@ -34,14 +34,14 @@ namespace MarvelLibrary.Services
         public static IRestResponse ComicsGet(int id)
         {
             var client = new RestClient("https://gateway.marvel.com:443/v1/public");
-            var request = new RestRequest($"/characters/{id}/comics?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest($"/characters/{id}/comics?format=comic&formatType=comic&orderBy=onsaleDate&ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
             return client.Execute(request);
         }
         public static IRestResponse ComicsGet(int limit, int offset, int id)
         {
 
             var client = new RestClient("https://gateway.marvel.com:443/v1/public");
-            var request = new RestRequest($"/characters/{id}/comics?ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
+            var request = new RestRequest($"/characters/{id}/comics?format=comic&formatType=comic&orderBy=onsaleDate&ts={ts}&apikey={apiKey}&hash={hash}", Method.GET) { RequestFormat = DataFormat.Json };
             request.AddParameter("limit", limit);
             request.AddParameter("offset", offset);
             return client.Execute(request);
