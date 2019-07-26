@@ -38,8 +38,9 @@ namespace MarvelLibrary
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<MarvelLibraryContext>(options =>
-                    options.UseMySql(Configuration.GetConnectionString("MarvelLibraryContext"), builder => builder.MigrationsAssembly("MarvelLibrary")));
+            //services.AddDbContext<MarvelLibraryContext>(options =>options.UseMySql(Configuration.GetConnectionString("MarvelLibraryContext"), builder => builder.MigrationsAssembly("MarvelLibrary")));
+
+            services.AddDbContext<MarvelLibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MarvelLibraryContext"),builder=>builder.MigrationsAssembly("MarvelLibrary")));
 
             services.AddScoped<CharacterService>();
             services.AddScoped<FavService>();

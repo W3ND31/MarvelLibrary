@@ -46,10 +46,6 @@ namespace MarvelLibrary.Controllers
 
             var character = await _context.Character
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (character == null)
-            {
-                return NotFound();
-            }
 
             bool teste = _favService.FavExists((int)id);
             if (teste)

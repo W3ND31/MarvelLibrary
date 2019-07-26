@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Esse arquivo é usado pelo processo de publicação/pacote do seu projeto Web. É possível personalizar o comportamento deste processo
+ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7XkvWfwCGUue96K3qG7vSgAAAAACAAAAAAADZgAAwAAAABAAAADWGpEnYQRmaS9XGV59qSNmAAAAAASAAACgAAAAEAAAAMJdQrBjT9R2+oLZRGN7r5SAAAAAhv/gR7ajbtCQ6yFpi6/av+oAAtE+bZAUUssbfV/G6mkJBJcUsBbeoYJy4a+GK/3nA7N0pwvBHmyQvogECwcLIr+TKpw5RPIxr29mklt6Kjb/KDSkPNo4Xg6Bdfz+ZT1ZcZtOG/WkRJj5mo3hFxai3pD3KLTJ8Aoda/sGD+edHlcUAAAAu7S00ajllUStJhhdvLEt4W57/hA=</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MarvelLibraryContext">
+      <Value>Server=marvel-library.database.windows.net%3bdatabase=marveldb%3bUser Id=dev%3bpassword=dendel_231194%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MarvelLibrary.Data.MarvelLibraryContext">
+      <Value>Server=marvel-library.database.windows.net%3bdatabase=marveldb%3bUser Id=dev%3bpassword=dendel_231194%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

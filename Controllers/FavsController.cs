@@ -51,14 +51,6 @@ namespace MarvelLibrary.Controllers
                 }
                 _comicService.InsertComics((int)id);
 
-                var comics = await _comicService.GetComics((int)id, searchString);
-
-                int n = comics.Count();
-                if (n == 0)
-                {
-                    return NotFound();
-                }
-
                 return View(await _comicService.GetComics((int)id,searchString));
             }
             else
@@ -68,14 +60,6 @@ namespace MarvelLibrary.Controllers
                     return NotFound();
                 }
                 _comicService.InsertComics((int)id);
-
-                var comics = await _comicService.GetComics((int)id);
-
-                int n = comics.Count();
-                if (n == 0)
-                {
-                    return NotFound();
-                }
 
                 return View(await _comicService.GetComics((int)id));
             }

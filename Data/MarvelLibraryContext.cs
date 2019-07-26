@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Models;
 using MarvelLibrary.Models.ViewModels;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MarvelLibrary.Data
 {
@@ -17,8 +18,9 @@ namespace MarvelLibrary.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<Fav>().Property(p => p.Id).ValueGeneratedOnAdd();
-            builder.Entity<Fav>().HasKey(table => new { table.Id, table.CharacterId });
+           builder.Entity<Fav>().HasKey(table => new { table.Id, table.CharacterId });
+            builder.Entity<Character>().Property(m => m.Id).ValueGeneratedNever();
+            builder.Entity<Comic>().Property(m => m.Id).ValueGeneratedNever();
 
             builder.Entity<ComicCharacter>().HasKey(table => new { table.ComicId, table.CharacterId });
 
