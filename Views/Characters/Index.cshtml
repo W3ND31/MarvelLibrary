@@ -1,31 +1,40 @@
-﻿@model IEnumerable<MarvelLibrary.Models.Character>
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Common;
+@model X.PagedList.IPagedList<MarvelLibrary.Models.Character>
 
 @{
     ViewData["Title"] = "Characters";
 }
+         <h1>Characters</h1>
 
-<h1 class="mt-5">Characters</h1>
-
-<p>
-    <a asp-action="Create">Get Characters</a>
-</p>
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color">
         <p>
-            Find by name: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
-            <input type="submit" value="Search" class="btn-dark" /> |
-            <a asp-action="Index">Back to Full List</a>
+            <a asp-action="Create">Get Characters</a>
         </p>
-    </div>
-</form>
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" value="@ViewData["Filter"]" />
+                    <input type="submit" value="Search" class="btn-dark" /> |
+                    <a asp-action="Index">Back to Full List</a>
+                </p>
+            </div>
+        </form>
+        <div>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</div>
+        <div class="pagination text-center">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, searchString = ViewData["Filter"] }), new PagedListRenderOptions
+            {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })
+        </div>
 <table class="table">
     <thead class="thead-dark table-striped table-bordered table-hover">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                Name
             </th>
             <th>Actions</th>
         </tr>
@@ -37,9 +46,17 @@
                 <td>@Html.DisplayFor(modelItem => item.Id)</td>
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" asp-route-searchString="@ViewData["Filter"]" asp-route-pagina="@ViewBag.pagina">Details</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<div style="margin-left : 500px">Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</div>
+<div class="pagination" style="margin-left : 300px">
+    @Html.PagedListPager(Model, pagina => Url.Action("Index", new { pagina, searchString = ViewData["Filter"] }), new PagedListRenderOptions
+    {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })
+</div>

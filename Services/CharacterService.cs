@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MarvelLibrary.Data;
 using Microsoft.EntityFrameworkCore;
+using X.PagedList;
 
 namespace MarvelLibrary.Services
 {
@@ -50,14 +51,14 @@ namespace MarvelLibrary.Services
                 n += 100;
             }
         }
-        public async Task<IEnumerable<Character>> GetCharacters()
+        public IPagedList<Character> GetCharacters(int pagina)
         {
-            return await _context.Character.OrderBy(e => e.Name).ToListAsync();
+            return _context.Character.OrderBy(e => e.Name).ToPagedList(pagina, 100);
         }
 
-        public async Task<IEnumerable<Character>> GetCharacters(string searchString)
+        public IPagedList<Character> GetCharacters(string searchString, int pagina)
         {
-            return await _context.Character.Where(s => s.Name.Contains(searchString)).OrderBy(e => e.Name).ToListAsync();
+            return _context.Character.Where(s => s.Name.Contains(searchString)).OrderBy(e => e.Name).ToPagedList(pagina, 100);
         }
 
         public async Task<IEnumerable<Character>> FavCharacters(){

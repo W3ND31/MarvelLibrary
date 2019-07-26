@@ -1,5 +1,6 @@
-﻿@model IEnumerable<MarvelLibrary.Models.Comic>
-
+﻿@using X.PagedList.Mvc.Core;
+@using X.PagedList.Mvc.Common;
+@model X.PagedList.IPagedList<MarvelLibrary.Models.Comic>
 @{
     ViewData["Title"] = "Comics";
 }
@@ -15,18 +16,25 @@
 <body>
 
     <div class="mt-5">
-        <h1 class="mt-5">Comics</h1>
-        <!--<p><a asp-action="Comics" asp-route-id=@ViewBag.id>Get Comics</a> | --> 
+        <h1 class="mt-5">Comics for @ViewBag.Name</h1>
         <p><a asp-action="Index">Back to List</a></p>
         <form asp-action="Details" method="get">
             <div class="form-actions no-color">
                 <p>
-                    Find by name: <input type="text" name="SearchString" asp-route-id=@ViewBag.id value="@ViewData["Filter"]" />
+                    Find by name: <input type="text" name="SearchString" asp-route-id=@ViewBag.id value="@ViewBag.filter" />
                     <input type="submit" value="Search" class="btn-dark" /> |
                     <a asp-action="Details">Back to Full List</a>
                 </p>
             </div>
         </form>
+        <div>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</div>
+        <div class="pagination">
+            @Html.PagedListPager(Model, pagina => Url.Action("Details", new { pagina, searchString = ViewBag.filter }), new PagedListRenderOptions
+            {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })
+        </div>
         <hr>
         @foreach (var item in Model)
         {
@@ -47,8 +55,14 @@
         }
 
     </div>
-    <div>
+        <div>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount </div>
+        <div class="pagination">
+            @Html.PagedListPager(Model, pagina => Url.Action("Details", new { pagina, searchString = ViewBag.filter }), new PagedListRenderOptions
+            {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })
+        </div>
         <a asp-action="Index">Back to List</a>
-    </div>
 </body>
 </html>

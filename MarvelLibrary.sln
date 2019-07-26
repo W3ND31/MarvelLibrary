@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelLibrary", "MarvelLibrary.csproj", "{2447E2CB-17FB-4E09-B15C-E0D4C85EAD96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarvelLibrary", "MarvelLibrary.csproj", "{9F99BB3D-EC1C-4552-9CD3-EAEB5F422E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2447E2CB-17FB-4E09-B15C-E0D4C85EAD96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2447E2CB-17FB-4E09-B15C-E0D4C85EAD96}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2447E2CB-17FB-4E09-B15C-E0D4C85EAD96}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2447E2CB-17FB-4E09-B15C-E0D4C85EAD96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F99BB3D-EC1C-4552-9CD3-EAEB5F422E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F99BB3D-EC1C-4552-9CD3-EAEB5F422E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F99BB3D-EC1C-4552-9CD3-EAEB5F422E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F99BB3D-EC1C-4552-9CD3-EAEB5F422E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {675EBD57-3D4A-495C-9635-65E65571DB74}
+		SolutionGuid = {B6CFBD57-FFAF-411E-8D80-8FD58935323A}
 	EndGlobalSection
 EndGlobal

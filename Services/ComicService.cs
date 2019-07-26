@@ -1,11 +1,13 @@
 ﻿using MarvelLibrary.Data;
 using MarvelLibrary.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace MarvelLibrary.Services
 {
@@ -20,7 +22,7 @@ namespace MarvelLibrary.Services
         public void InsertComics(int id)
         {
 
-            dynamic jResult =  JObject.Parse(RestServices.ComicsGet(id).Content);
+            dynamic jResult = JObject.Parse(RestServices.ComicsGet(id).Content);
             int total = jResult.data.total;
             int comics = _context.ComicCharacter.Count(e => e.CharacterId == id);
             int n = 0;
@@ -85,15 +87,18 @@ namespace MarvelLibrary.Services
             }
         }
 
-        public async Task<IEnumerable<Comic>> GetComics(int id)
+        public IPagedList<Comic> GetComics(int id, int pagina)
         {
-            var comicsForId = await (from p in _context.ComicCharacter where p.CharacterId == id select p.ComicId).ToListAsync();
-            return await (from p in _context.Comic where comicsForId.Contains(p.Id) select p).OrderBy(e => e.OnSaleDate).ToListAsync();
+            var comicsForId = (from p in _context.ComicCharacter where p.CharacterId == id select p.ComicId).ToList();
+
+            return (from p in _context.Comic where comicsForId.Contains(p.Id) select p).OrderBy(e => e.OnSaleDate).ToPagedList(pagina, 30);
         }
-        public async Task<IEnumerable<Comic>> GetComics(int id,string searchString)
+        public IPagedList<Comic> GetComics(int id, string searchString, int pagina)
         {
-            var comicsForId = await (from p in _context.ComicCharacter where p.CharacterId == id select p.ComicId).ToListAsync();
-            return await (from p in _context.Comic where comicsForId.Contains(p.Id) && p.Title.Contains(searchString) select p).OrderBy(e => e.OnSaleDate).ToListAsync();
+            var comicsForId = (from p in _context.ComicCharacter where p.CharacterId == id select p.ComicId).ToList();
+
+            return (from p in _context.Comic where comicsForId.Contains(p.Id) && p.Title.Contains(searchString) select p).OrderBy(e => e.OnSaleDate).ToPagedList(pagina, 30);
+
         }
     }
 }

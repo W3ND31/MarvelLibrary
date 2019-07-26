@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Data;
 using MarvelLibrary.Models;
 using MarvelLibrary.Services;
+using X.PagedList;
 
 namespace MarvelLibrary.Controllers
 {
@@ -38,9 +39,16 @@ namespace MarvelLibrary.Controllers
             return RedirectToAction(nameof(Details), new { id = n });
         }
 
-        public async Task<IActionResult> Details(int? id, string searchString)
+        public IActionResult Details(int? id, string searchString, int pagina, string name)
         {
-            ViewData["Filter"] = searchString;
+            ViewBag.name = name;
+
+            if (pagina == 0)
+            {
+                pagina = 1;
+            }
+
+            ViewBag.filter = searchString;
             ViewBag.id = id;
 
             if (!String.IsNullOrEmpty(searchString))
@@ -50,8 +58,8 @@ namespace MarvelLibrary.Controllers
                     return NotFound();
                 }
                 _comicService.InsertComics((int)id);
-
-                return View(await _comicService.GetComics((int)id,searchString));
+               
+                return View(_comicService.GetComics((int)id, searchString, pagina));
             }
             else
             {
@@ -60,8 +68,8 @@ namespace MarvelLibrary.Controllers
                     return NotFound();
                 }
                 _comicService.InsertComics((int)id);
-
-                return View(await _comicService.GetComics((int)id));
+               
+                return View(_comicService.GetComics((int)id, pagina));
             }
         }
 

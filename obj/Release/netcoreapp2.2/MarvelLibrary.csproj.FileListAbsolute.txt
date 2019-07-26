@@ -21,7 +21,6 @@ D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Favs\Index.g.csh
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
-D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Shared\View.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs

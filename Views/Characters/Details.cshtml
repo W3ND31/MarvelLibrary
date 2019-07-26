@@ -37,6 +37,6 @@
 </div>
 <hr />
 <div>
-    <a asp-action="Favorite" asp-route-id="@Model.Id">@ViewBag.Fav</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Favorite" asp-route-id="@Model.Id" asp-route-searchString="@ViewBag.searchString" asp-route-pagina="@ViewBag.pagina">@ViewBag.Fav </a> |
+    <a asp-action="Index" asp-route-searchString="@ViewBag.searchString" asp-route-pagina="@ViewBag.pagina">Back to List</a>
 </div>

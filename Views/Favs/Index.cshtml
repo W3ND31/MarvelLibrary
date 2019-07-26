@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Favorites";
+   
 }
 
 <h1 class="mt-5">Favorites Characters</h1>
@@ -26,7 +27,7 @@
                 <td>@Html.DisplayFor(modelItem => item.Name)</td>
 
                 <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Comics</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" asp-route-name=" @item.Name">Comics</a>
                 </td>
 
             </tr>

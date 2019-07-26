@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Services;
 using MarvelLibrary.Data;
+using X.PagedList;
 
 namespace MarvelLibrary.Controllers
 {
@@ -23,26 +24,35 @@ namespace MarvelLibrary.Controllers
             _favService = favService;
         }
 
-        public async Task<IActionResult> Index(string searchString)
+        public IActionResult Index(string searchString, int pagina)
         {
+            if(pagina == 0)
+            {
+                pagina = 1;
+            }
+            ViewBag.pagina = pagina;
             ViewData["Filter"] = searchString;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                return View(await _charService.GetCharacters(searchString));
+                return View(_charService.GetCharacters(searchString,pagina));
             }
             else
             {
-                return View(await _charService.GetCharacters());
+                return View(_charService.GetCharacters(pagina));
             }
         }
 
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, string searchString, int? pagina)
         {
-            if (id == null)
+
+            if (pagina == null)
             {
-                return NotFound();
+                pagina = 1;
             }
+
+            ViewBag.pagina = pagina;
+            ViewBag.searchString = searchString;
 
             var character = await _context.Character
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -67,7 +77,7 @@ namespace MarvelLibrary.Controllers
             return Redirect("Index");
         }
 
-        public IActionResult Favorite(int id)
+        public IActionResult Favorite(int id,string searchString, int? pagina)
         {
             if (_favService.FavExists(id))
             {
@@ -77,7 +87,9 @@ namespace MarvelLibrary.Controllers
                 _favService.InsertFav(id);
             }
             int n = id;
-            return RedirectToAction(nameof(Details), new { id = n });
+            string s = searchString;
+            int p = (int)pagina;
+            return RedirectToAction(nameof(Details), new { id = n, searchString = s, pagina = p});
 
         }
 
