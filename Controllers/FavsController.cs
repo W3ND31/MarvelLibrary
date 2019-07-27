@@ -9,27 +9,31 @@ using MarvelLibrary.Data;
 using MarvelLibrary.Models;
 using MarvelLibrary.Services;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MarvelLibrary.Controllers
 {
+    [Authorize]
     public class FavsController : Controller
     {
         private readonly MarvelLibraryContext _context;
         private readonly CharacterService _charService;
         private readonly FavService _favService;
         private readonly ComicService _comicService;
+        private readonly AccountService _accountService;
 
-        public FavsController(MarvelLibraryContext context, CharacterService charService, FavService favService, ComicService comicService)
+        public FavsController(MarvelLibraryContext context, CharacterService charService, FavService favService, ComicService comicService, AccountService accountService)
         {
             _context = context;
             _charService = charService;
             _favService = favService;
             _comicService = comicService;
+            _accountService = accountService;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _charService.FavCharacters());
+            return View(await _charService.FavCharacters(_accountService.GetUserLogged()));
         }
 
         public IActionResult Comics(int id)
@@ -73,9 +77,9 @@ namespace MarvelLibrary.Controllers
             }
         }
 
-        private bool FavExists(int id)
+        private bool FavExists(int id,string login)
         {
-            return _context.Fav.Any(e => e.Id == id);
+            return _context.Fav.Any(e => e.CharacterId == id && e.AccountLogin == login);
         }
     }
 }

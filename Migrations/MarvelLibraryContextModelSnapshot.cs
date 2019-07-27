@@ -19,6 +19,24 @@ namespace MarvelLibrary.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("MarvelLibrary.Models.Account", b =>
+                {
+                    b.Property<string>("Login")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("PwHash");
+
+                    b.HasKey("Login");
+
+                    b.ToTable("Account");
+                });
+
             modelBuilder.Entity("MarvelLibrary.Models.Character", b =>
                 {
                     b.Property<int>("Id");
@@ -72,13 +90,11 @@ namespace MarvelLibrary.Migrations
 
             modelBuilder.Entity("MarvelLibrary.Models.Fav", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
                     b.Property<int>("CharacterId");
 
-                    b.HasKey("Id", "CharacterId");
+                    b.Property<string>("AccountLogin");
+
+                    b.HasKey("CharacterId", "AccountLogin");
 
                     b.ToTable("Fav");
                 });

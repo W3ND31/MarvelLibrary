@@ -18,20 +18,18 @@ namespace MarvelLibrary.Data
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-           builder.Entity<Fav>().HasKey(table => new { table.Id, table.CharacterId });
+            builder.Entity<Fav>().HasKey(table => new { table.CharacterId,table.AccountLogin});
             builder.Entity<Character>().Property(m => m.Id).ValueGeneratedNever();
             builder.Entity<Comic>().Property(m => m.Id).ValueGeneratedNever();
-
             builder.Entity<ComicCharacter>().HasKey(table => new { table.ComicId, table.CharacterId });
+            builder.Entity<Account>().HasKey(table => new { table.Login });
 
         }
 
         public DbSet<Character> Character { get; set; }
-
         public DbSet<Fav> Fav { get; set; }
-
         public DbSet<Comic> Comic { get; set; }
-
         public DbSet<ComicCharacter> ComicCharacter { get; set; }
+        public DbSet<Account> Account { get; set; }
     }
 }

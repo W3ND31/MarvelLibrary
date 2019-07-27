@@ -32,3 +32,6 @@ D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\MarvelLibrary.Views.pdb
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\MarvelLibrary.dll
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\MarvelLibrary.pdb
 D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\MarvelLibrary.csproj.CopyComplete
+D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Accounts\Login.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Accounts\Logout.g.cshtml.cs
+D:\C#\Repos\MarvelLibrary\obj\Release\netcoreapp2.2\Razor\Views\Accounts\Register.g.cshtml.cs

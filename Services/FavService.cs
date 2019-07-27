@@ -15,28 +15,29 @@ namespace MarvelLibrary.Services
         {
             _context = context;
         }
-        public bool FavExists(int id)
+        public bool FavExists(int id, string login)
         {
-            return _context.Fav.Any(e => e.CharacterId == id);
+            return _context.Fav.Any(e => e.CharacterId == id && e.AccountLogin == login);
         }
 
-        public void InsertFav(int id)
+        public void InsertFav(int id, string login)
         {
-            if (!FavExists(id))
+            if (!FavExists(id,login))
             {
-                Fav f = new Fav((int)id);
+                Fav f = new Fav(id, login);
                 _context.Fav.Add(f);
                 _context.SaveChanges();
             }
         }
 
-        public void RemoveFav(int id)
+        public void RemoveFav(int id,string login)
         {
-            if (FavExists(id))
+            if (FavExists(id,login))
             {
-                List<Fav> list = _context.Fav.Where(e => e.CharacterId == id).ToList();
-                Fav f = list[0];
-                _context.Fav.Remove(f);
+                //List<Fav> list = _context.Fav.Where(e => e.CharacterId == id).ToList();
+                Fav fav = new Fav();
+                fav = _context.Fav.Find(id, login);
+                _context.Fav.Remove(fav);
                 _context.SaveChanges();
             }
         }

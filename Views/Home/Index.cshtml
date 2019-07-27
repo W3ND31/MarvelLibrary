@@ -2,8 +2,15 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="mt-5">Welcome to Marvel Library</h1>
-    <p>A library made with public Marvel API disponible on <a href="https://developer.marvel.com/docs">this</a> link</p>
-    <p>On this WebApp you will get access to all Characters from Marvel Universe and their published comics.</p>
-</div>
+
+    <div class="text-center">
+        <ul class="nav navbar-nav navbar-right text-right">
+            <li>
+                <a asp-action="Logout">Sign Out</a>
+            </li>
+        </ul>
+        <h1 class="mt-5">Welcome to Marvel Library, @ViewBag.User!</h1>
+        <p>A library made with public Marvel API disponible on <a href="https://developer.marvel.com/docs">this</a> link</p>
+        <p>On this WebApp you will get access to all Characters from Marvel Universe and their published comics.</p>
+        <p><strong>Excelsior!</strong></p>
+    </div>

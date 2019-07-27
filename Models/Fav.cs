@@ -9,17 +9,19 @@ namespace MarvelLibrary.Models
 {
     public class Fav
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int Id { get; set; }
         public int CharacterId { get; set; }
+        public string AccountLogin { get; set; }
 
         public Fav()
         {
         }
 
-        public Fav(int characterId)
+        public Fav(int characterId, string accountLogin)
         {
             CharacterId = characterId;
+            AccountLogin = accountLogin;
         }
 
        

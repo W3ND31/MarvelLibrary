@@ -6,6 +6,16 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7XkvWfwCGUue96K3qG7vSgAAAAACAAAAAAADZgAAwAAAABAAAACtapZtE/276XezpNK0YAVOAAAAAASAAACgAAAAEAAAAK6EQWQf+gxLKADz45WtETiAAAAArWbFkQmYxNSMzvRboH/YCC6YKgIFyaMO8ZuNOXold6yDiDXWoeP0KG2ALLhqDJe783G7OpDE64d99yyR3cQbFvaFUpq+Y89k/bO2P2+inYq8Y058PslpUWmM5W4mlKTBZjdPc93f4lPVVim1U+LiOZg0NL4gsk/LMFs7d8CDqJMUAAAAYMqLqtAHoqZ29UBpVWR7GFxfAQA=</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7XkvWfwCGUue96K3qG7vSgAAAAACAAAAAAADZgAAwAAAABAAAAAOy4qKMRzFNXNV4rrB34noAAAAAASAAACgAAAAEAAAAHVyO8nRYwaSi9VIPXS/1JyAAAAA5EnPkzIqNQZYVOrYDXg5r23uJ5gtruB44uhNXXL4NeplB0mYW3+YIDKF3dflvK1YHn9OwDvbsI4FjVJ3kO6A63dA0IB2vWOCgfjdI/NGkjetE73oZHW6h4EFnYLIdV38OiUhbHEp+5Cmp1TyUZSxFr9cVZyYNjH/QpkTMl9TULYUAAAAinV/Bm4U5ZiUYnAMawtrWpoTV4A=</EncryptedPassword>
   </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MarvelLibraryContext">
+      <Value>Server=tcp:marvel-library.database.windows.net,1433%3bInitial Catalog=marveldb%3bPersist Security Info=False%3bUser ID={your_username}%3bPassword={your_password}%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="MarvelLibrary.Data.MarvelLibraryContext">
+      <Value>Server=tcp:marvel-library.database.windows.net,1433%3bInitial Catalog=marveldb%3bPersist Security Info=False%3bUser ID={your_username}%3bPassword={your_password}%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+    </EFMigrations>
+  </ItemGroup>
 </Project>

@@ -61,8 +61,8 @@ namespace MarvelLibrary.Services
             return _context.Character.Where(s => s.Name.Contains(searchString)).OrderBy(e => e.Name).ToPagedList(pagina, 100);
         }
 
-        public async Task<IEnumerable<Character>> FavCharacters(){
-            var _fav = _context.Fav.Select(e => e.CharacterId).ToList();
+        public async Task<IEnumerable<Character>> FavCharacters(string login){
+            var _fav = _context.Fav.Where(e=> e.AccountLogin == login).Select(e => e.CharacterId).ToList();
             return await (from p in _context.Character where _fav.Contains(p.Id) select p).OrderBy(e => e.Name).ToListAsync();
         }
     }

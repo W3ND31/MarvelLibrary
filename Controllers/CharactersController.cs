@@ -8,20 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Services;
 using MarvelLibrary.Data;
 using X.PagedList;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace MarvelLibrary.Controllers
 {
+    [Authorize]
     public class CharactersController : Controller
     {
         private readonly MarvelLibraryContext _context;
         private readonly CharacterService _charService;
         private readonly FavService _favService;
+        private readonly AccountService _accountService;
 
-        public CharactersController(MarvelLibraryContext context, CharacterService charService, FavService favService)
+        public CharactersController(MarvelLibraryContext context, CharacterService charService, FavService favService, AccountService accountService)
         {
             _context = context;
             _charService = charService;
             _favService = favService;
+            _accountService = accountService;
         }
 
         public IActionResult Index(string searchString, int pagina)
@@ -57,7 +62,7 @@ namespace MarvelLibrary.Controllers
             var character = await _context.Character
                 .FirstOrDefaultAsync(m => m.Id == id);
 
-            bool teste = _favService.FavExists((int)id);
+            bool teste = _favService.FavExists((int)id,_accountService.GetUserLogged());
             if (teste)
             {
                 ViewBag.Fav = "Remove Favorite";
@@ -79,12 +84,12 @@ namespace MarvelLibrary.Controllers
 
         public IActionResult Favorite(int id,string searchString, int? pagina)
         {
-            if (_favService.FavExists(id))
+            if (_favService.FavExists(id, _accountService.GetUserLogged()))
             {
-                _favService.RemoveFav(id);
+                _favService.RemoveFav(id, _accountService.GetUserLogged());
             }else
             {
-                _favService.InsertFav(id);
+                _favService.InsertFav(id, _accountService.GetUserLogged());
             }
             int n = id;
             string s = searchString;

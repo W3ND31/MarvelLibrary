@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using MarvelLibrary.Models;
 using MarvelLibrary.Data;
 using MarvelLibrary.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace MarvelLibrary
 {
@@ -35,22 +36,29 @@ namespace MarvelLibrary
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             //services.AddDbContext<MarvelLibraryContext>(options =>options.UseMySql(Configuration.GetConnectionString("MarvelLibraryContext"), builder => builder.MigrationsAssembly("MarvelLibrary")));
+            services.AddDbContext<MarvelLibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MarvelLibraryContext"), builder => builder.MigrationsAssembly("MarvelLibrary")));
 
-            services.AddDbContext<MarvelLibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MarvelLibraryContext"),builder=>builder.MigrationsAssembly("MarvelLibrary")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+            {
+                options.LoginPath = "/Home/Index/";
+            });
 
             services.AddScoped<CharacterService>();
             services.AddScoped<FavService>();
             services.AddScoped<RestServices>();
             services.AddScoped<ComicService>();
+            services.AddScoped<AccountService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            //services.AddScoped<HttpContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -62,15 +70,16 @@ namespace MarvelLibrary
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
+            
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Accounts}/{action=Login}/{id?}");
             });
         }
     }
