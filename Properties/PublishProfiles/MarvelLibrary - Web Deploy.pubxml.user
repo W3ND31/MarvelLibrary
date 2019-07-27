@@ -6,16 +6,16 @@ ao editar este arquivo MSBuild. Para saber mais sobre isso, visite https://go.mi
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7XkvWfwCGUue96K3qG7vSgAAAAACAAAAAAADZgAAwAAAABAAAAAOy4qKMRzFNXNV4rrB34noAAAAAASAAACgAAAAEAAAAHVyO8nRYwaSi9VIPXS/1JyAAAAA5EnPkzIqNQZYVOrYDXg5r23uJ5gtruB44uhNXXL4NeplB0mYW3+YIDKF3dflvK1YHn9OwDvbsI4FjVJ3kO6A63dA0IB2vWOCgfjdI/NGkjetE73oZHW6h4EFnYLIdV38OiUhbHEp+5Cmp1TyUZSxFr9cVZyYNjH/QpkTMl9TULYUAAAAinV/Bm4U5ZiUYnAMawtrWpoTV4A=</EncryptedPassword>
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA7XkvWfwCGUue96K3qG7vSgAAAAACAAAAAAADZgAAwAAAABAAAABxbYX+5DhsIxBoXDXW25n8AAAAAASAAACgAAAAEAAAAL4wxxizUzGaWmjG0gLL14OAAAAASlyHE2JQsRiZeqFXopcFfdtw+IRaQVcUIZqho9Qc1TYuIAQJhIvfNbCvy0gyWbzELdCrg/AkdnT4psBrOcfWTpdLz2pXch+fyctkc00HhF0dAgTPmw3RuQtduuOYU100EQNOyzPWR1RMGrTeotUy9FskiVgV1G4duE2xtsnZZDIUAAAAZN8FYnCRM/JpKtHekMgdMbpi88k=</EncryptedPassword>
   </PropertyGroup>
   <ItemGroup>
     <DestinationConnectionStrings Include="MarvelLibraryContext">
-      <Value>Server=tcp:marvel-library.database.windows.net,1433%3bInitial Catalog=marveldb%3bPersist Security Info=False%3bUser ID={your_username}%3bPassword={your_password}%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+      <Value>Data Source=tcp:marvellibrarydbserver.database.windows.net,1433%3bInitial Catalog=marveldb%3bUser Id=dev%40marvellibrarydbserver%3bPassword=dendel_231194</Value>
     </DestinationConnectionStrings>
   </ItemGroup>
   <ItemGroup>
     <EFMigrations Include="MarvelLibrary.Data.MarvelLibraryContext">
-      <Value>Server=tcp:marvel-library.database.windows.net,1433%3bInitial Catalog=marveldb%3bPersist Security Info=False%3bUser ID={your_username}%3bPassword={your_password}%3bMultipleActiveResultSets=False%3bEncrypt=True%3bTrustServerCertificate=False%3bConnection Timeout=30%3b</Value>
+      <Value>Data Source=tcp:marvellibrarydbserver.database.windows.net,1433%3bInitial Catalog=marveldb%3bUser Id=dev%40marvellibrarydbserver%3bPassword=dendel_231194</Value>
     </EFMigrations>
   </ItemGroup>
 </Project>

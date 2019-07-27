@@ -3,7 +3,7 @@
   <parameter name="IIS Web Application Name" description="" value="MarvelLibrary" tags="IisApp">
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^D:\\C\#\\Repos\\MarvelLibrary\\obj\\Release\\netcoreapp2\.2\\PubTmp\\Out\\$" />
   </parameter>
-  <parameter name="MarvelLibrary.Data.MarvelLibraryContext" description="" value="Server=tcp:marvel-library.database.windows.net,1433;Initial Catalog=marveldb;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="dbfullsql">
+  <parameter name="MarvelLibrary.Data.MarvelLibraryContext" description="" value="Data Source=tcp:marvellibrarydbserver.database.windows.net,1433;Initial Catalog=marveldb;User Id=dev@marvellibrarydbserver;Password=dendel_231194" tags="dbfullsql">
     <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^D:\\C\#\\Repos\\MarvelLibrary\\obj\\Release\\netcoreapp2\.2\\PubTmp\\EFSQLScripts\\MarvelLibrary\.Data\.MarvelLibraryContext\.sql$" />
   </parameter>
 </parameters>
